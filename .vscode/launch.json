@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug (module) - prompt chaining",
+      "type": "python",
+      "request": "launch",
+      "module": "${input:framework}.patterns.${input:pattern}.run",
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ],
+  "inputs": [
+    {
+      "id": "framework",
+      "type": "pickString",
+      "description": "Framework to run",
+      "options": ["langchain_impl", "llamastack_impl", "adk_impl"],
+      "default": "langchain_impl"
+    },
+    {
+      "id": "pattern",
+      "type": "pickString",
+      "description": "Pattern to run",
+      "options": ["prompt_chaining"],
+      "default": "prompt_chaining"
+    }
+  ]
+}
