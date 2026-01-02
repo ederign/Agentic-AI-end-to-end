@@ -1,0 +1,25 @@
+[project]
+name = "langchain-impl"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Eder Ignatowicz", email = "ignatowicz@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "common",
+    "langchain>=1.2.0",
+    "langgraph>=1.0.5",
+]
+
+[project.scripts]
+langchain-impl = "langchain_impl:main"
+prompt-chaining = "langchain_impl.patterns.prompt_chaining.run:main"
+
+[build-system]
+requires = ["uv_build>=0.9.21,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+common = { workspace = true }

@@ -1,0 +1,28 @@
+[project]
+name = "agentic-ai-end-to-end"
+version = "0.1.0"
+description = "My research on agentic systems>"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[tools.uv.workspace]
+members = ["packages/*"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+    "pyright",
+]
+
+[tool.uv.workspace]
+members = [
+    "packages/common",
+    "packages/langchain_impl",
+    "packages/llamastack_impl",
+    "packages/adk_impl",
+]
+
+[tool.uv.sources]
+common = { workspace = true }
