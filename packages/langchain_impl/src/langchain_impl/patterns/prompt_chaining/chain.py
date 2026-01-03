@@ -1,13 +1,16 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.callbacks import StdOutCallbackHandler
+from langchain_core.runnables import Runnable
 
-def run_prompt_chaining(text_input: str) -> str:
-    chain = build_chain(text_input)
+def run_prompt_chaining(text_input: str, verbose: bool = False) -> str:
+    chain = build_chain()
     # Execute the chain with the input text dictionary.
-    return chain.invoke({"text_input": text_input})
+    config = {"callbacks": [StdOutCallbackHandler()]} if verbose else {}
+    return chain.invoke({"text_input": text_input}, config=config)
     
-def build_chain(text_input: str) -> str :
+def build_chain() -> Runnable:
     # Code extracted from: https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9
 
     # Initialize the Language Model (using ChatOpenAI is recommended)
