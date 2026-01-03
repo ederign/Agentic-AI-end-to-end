@@ -1,0 +1,9 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/packages/langchain_impl/src",
+    "${workspaceFolder}/packages/common/src",
+    "${workspaceFolder}/packages/llamastack_impl/src",
+    "${workspaceFolder}/packages/adk_impl/src"
+  ]
+}

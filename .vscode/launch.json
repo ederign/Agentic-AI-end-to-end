@@ -5,6 +5,7 @@
       "name": "Debug (module) - prompt chaining",
       "type": "python",
       "request": "launch",
+      "python": "${workspaceFolder}/.venv/bin/python",
       "module": "${input:framework}.patterns.${input:pattern}.run",
       "envFile": "${workspaceFolder}/.env",
       "console": "integratedTerminal",
