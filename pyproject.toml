@@ -1,7 +1,7 @@
 [project]
 name = "agentic-ai-end-to-end"
 version = "0.1.0"
-description = "My research on agentic systems>"
+description = "My research on agentic systems"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
