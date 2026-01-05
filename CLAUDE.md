@@ -46,3 +46,8 @@ Agentic patterns are organized under `packages/<impl>/src/<impl>/patterns/<patte
 
 ### Environment Configuration
 API keys are loaded from `.env` at repository root using `common.env.load_repo_dotenv()`. Copy `.env.example` to `.env` and add your `OPENAI_API_KEY`.
+
+## Implementation Notes
+
+### LlamaStack
+When implementing patterns with LlamaStack, prefer using the OpenAI Responses API client when possible for consistency and simplicity.
