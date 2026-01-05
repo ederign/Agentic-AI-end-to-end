@@ -95,13 +95,15 @@ async def _run_async(text_input: str, verbose: bool) -> SpecsJson:
         session_id="session",
         new_message=user_message,
     ):
-        if verbose:
-            print(f"[{event.author}] {event.content.parts[0].text if event.content else ''}")
+        if verbose and event.content and event.content.parts:
+            print(f"[{event.author}] {event.content.parts[0].text}")
 
     # Read result from state
     session = await runner.session_service.get_session(
         app_name="specs_app", user_id="user", session_id="session"
     )
+    if session is None:
+        raise RuntimeError("Session not found")
     result = session.state.get("result", {})
     if isinstance(result, str):
         result = json.loads(result)

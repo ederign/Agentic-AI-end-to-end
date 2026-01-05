@@ -1,14 +1,14 @@
 from langchain_core.callbacks import StdOutCallbackHandler
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import Runnable
+from langchain_core.runnables import Runnable, RunnableConfig
 from langchain_openai import ChatOpenAI
 
 
 def run_prompt_chaining(text_input: str, verbose: bool = False) -> str:
     chain = build_chain()
     # Execute the chain with the input text dictionary.
-    config = {"callbacks": [StdOutCallbackHandler()]} if verbose else None
+    config: RunnableConfig | None = {"callbacks": [StdOutCallbackHandler()]} if verbose else None
     return chain.invoke({"text_input": text_input}, config=config)
 
 

@@ -7,4 +7,5 @@ uv add --package langchain_impl python-dotenv
 
 ## How to run it?
 
-uv run --package langchain_impl prompt-chaining
+uv run langchain-prompt-chaining   # Runs LangChain implementation
+uv run adk-prompt-chaining         # Runs ADK implementation
