@@ -402,6 +402,12 @@ wheels = [
 name = "common"
 version = "0.1.0"
 source = { editable = "packages/common" }
+dependencies = [
+    { name = "python-dotenv" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "python-dotenv", specifier = ">=1.2.1" }]
 
 [[package]]
 name = "cryptography"

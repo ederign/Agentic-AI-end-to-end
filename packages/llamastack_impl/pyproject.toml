@@ -13,7 +13,7 @@ dependencies = [
 
 [project.scripts]
 llamastack-impl = "llamastack_impl:main"
-llama-stack-prompt-chaining = "llamastack_impl.patterns.prompt_chaining.run:main"
+llamastack-prompt-chaining = "llamastack_impl.patterns.prompt_chaining.run:main"
 
 [build-system]
 requires = ["uv_build>=0.9.21,<0.10.0"]
