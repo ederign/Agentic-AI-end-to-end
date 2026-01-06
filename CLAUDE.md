@@ -50,4 +50,4 @@ API keys are loaded from `.env` at repository root using `common.env.load_repo_d
 ## Implementation Notes
 
 ### LlamaStack
-When implementing patterns with LlamaStack, prefer using the OpenAI Responses API client when possible for consistency and simplicity.
+ALWAYS use the OpenAI Responses API client when implementing patterns with LlamaStack. Do NOT use the LlamaStack client directly without explicit approval from Eder first.

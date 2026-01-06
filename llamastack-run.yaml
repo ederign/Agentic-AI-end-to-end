@@ -1,0 +1,56 @@
+version: '2'
+image_name: agentic-ai-openai
+
+apis:
+  - inference
+  # - agents  # Requires additional setup
+  # - vector_io  # Requires faiss module
+  # - safety  # Requires Llama model for llama-guard
+  # - telemetry
+
+providers:
+  inference:
+    - provider_id: openai
+      provider_type: remote::openai
+      config:
+        api_key: ${env.OPENAI_API_KEY}
+  # vector_io:
+  #   - provider_id: faiss
+  #     provider_type: inline::faiss
+  #     config: {}
+  # agents:
+  #   - provider_id: meta-reference
+  #     provider_type: inline::meta-reference
+  #     config: {}
+
+storage:
+  backends:
+    kv_default:
+      type: kv_sqlite
+      db_path: ${env.SQLITE_STORE_DIR:=~/.llama/distributions/agentic-ai-openai}/kvstore.db
+    sql_default:
+      type: sql_sqlite
+      db_path: ${env.SQLITE_STORE_DIR:=~/.llama/distributions/agentic-ai-openai}/sqlstore.db
+  stores:
+    metadata:
+      namespace: registry
+      backend: kv_default
+    inference:
+      table_name: inference_store
+      backend: sql_default
+    conversations:
+      table_name: openai_conversations
+      backend: sql_default
+
+models:
+  - model_id: gpt-4o
+    provider_id: openai
+    provider_model_id: gpt-4o
+    model_type: llm
+  - model_id: gpt-4o-mini
+    provider_id: openai
+    provider_model_id: gpt-4o-mini
+    model_type: llm
+
+server:
+  port: 8321
