@@ -1784,10 +1784,16 @@ version = "0.1.0"
 source = { editable = "packages/llamastack_impl" }
 dependencies = [
     { name = "common" },
+    { name = "openai" },
+    { name = "pydantic" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "common", editable = "packages/common" }]
+requires-dist = [
+    { name = "common", editable = "packages/common" },
+    { name = "openai", specifier = ">=2.14.0" },
+    { name = "pydantic", specifier = ">=2.12.5" },
+]
 
 [[package]]
 name = "mako"

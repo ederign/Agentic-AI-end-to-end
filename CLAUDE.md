@@ -8,6 +8,8 @@ Research repository exploring agentic AI patterns using modern Python (3.12+). U
 
 ## Commands
 
+ALWAYS use `uv` for package management. NEVER use `pip` directly.
+
 ### Running examples
 ```bash
 uv run --package langchain_impl prompt-chaining
@@ -50,4 +52,9 @@ API keys are loaded from `.env` at repository root using `common.env.load_repo_d
 ## Implementation Notes
 
 ### LlamaStack
-ALWAYS use the OpenAI Responses API client when implementing patterns with LlamaStack. Do NOT use the LlamaStack client directly without explicit approval from Eder first.
+When implementing patterns with LlamaStack, use the OpenAI client in this priority order:
+1. **Responses API** (`client.responses.create`) - preferred, use this by default
+2. **Chat Completions API** (`client.chat.completions.create`) - fallback if Responses API doesn't support a feature
+3. **LlamaStack client** - requires explicit approval from Eder first
+
+Do NOT use the LlamaStack client directly without asking Eder.
