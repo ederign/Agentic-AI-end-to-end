@@ -197,6 +197,9 @@ uv run --package patterns prompt-chaining --approach raw
 
 ## References
 
+### Primary Source
+- **Agentic Design Patterns** by Antonio Gullí - The book that serves as the basis for this project
+
 ### Responses API
 - [OpenAI - Why We Built the Responses API](https://developers.openai.com/blog/responses-api/) - The design philosophy behind the Responses API
 

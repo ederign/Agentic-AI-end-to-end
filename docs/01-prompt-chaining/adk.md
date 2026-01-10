@@ -154,3 +154,9 @@ make prompt-chaining-adk
 # or
 uv run --package patterns prompt-chaining --approach adk
 ```
+
+## References
+
+- **Agentic Design Patterns** by Antonio Gullí - The book that serves as the basis for this project
+- [Google ADK Documentation](https://google.github.io/adk-docs/)
+- [Anthropic - Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)

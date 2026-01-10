@@ -2,6 +2,12 @@
 
 > **Note:** This catalog was curated through collaborative exploration with Claude (Anthropic). Each link includes a summary based on content review.
 
+## Primary Reference
+
+| Resource | Summary |
+|----------|---------|
+| **Agentic Design Patterns** by Antonio Gullí | The book that serves as the basis for this project. Covers agentic AI patterns including prompt chaining, routing, parallelization, and more. |
+
 ## Quick Navigation
 
 - [Core Concepts](#core-concepts)

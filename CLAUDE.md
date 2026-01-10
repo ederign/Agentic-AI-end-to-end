@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Research repository exploring agentic AI patterns using modern Python (3.12+). Uses [uv](https://docs.astral.sh/uv/) for package management with a workspace-based monorepo structure.
 
+**Primary Reference:** This project is based on the book **"Agentic Design Patterns"** by **Antonio Gullí**. Always reference the book in documentation.
+
 **Note:** Eder is learning Python. Always use the most **Pythonic** approach - prefer simple, readable, idiomatic Python over clever or complex patterns. Explain Python concepts when they come up.
 
 ## Commands
@@ -116,3 +118,25 @@ ADK uses LiteLLM internally as its infrastructure layer. It does NOT use LlamaSt
 3. **Update code locations and commands** in docs when moving files or changing CLI.
 
 4. **When adding utilities to `common` package**, update `packages/common/README.md` with the new function/module.
+
+## Pattern Documentation Structure
+
+Each pattern documentation should follow this blog-ready structure:
+
+### README.md (Pattern Overview)
+- Brief theory/motivation (credit sources like Anthropic's guide)
+- Use cases
+- Links to implementation docs
+
+### {approach}.md (Implementation Guide)
+- Key concepts for the approach
+- Code example
+- Strengths/Weaknesses
+- **References section** (ALWAYS include - link to framework docs and Anthropic guide)
+
+### comparison.md (Side-by-Side Analysis)
+- Summary table
+- Recommendations by scenario
+- References
+
+**IMPORTANT:** Every documentation file MUST include a References section with links to sources.

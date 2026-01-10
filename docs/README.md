@@ -1,18 +1,75 @@
-# Agentic Design Patterns: A Framework Comparison
+# Agentic Design Patterns: An Approach Comparison
 
-> **Note:** This documentation series was created through collaborative exploration with Claude (Anthropic).
+> **Repository:** [github.com/ederign/Agentic-AI-end-to-end](https://github.com/ederign/Agentic-AI-end-to-end)
+> **Note:** These findings emerged from collaborative exploration with Claude (Anthropic), including hands-on implementation and documentation research.
 
-This documentation series explores agentic AI design patterns and compares their implementation across three frameworks:
+Two of my main goals for this year are to learn **Agentic AI end-to-end** and to embrace **AI assistance** in my daily life—both in coding and in studying. With that in mind, I decided to start this blog series based on the book **"Agentic Design Patterns"** by **Antonio Gullí**, using Claude as my research companion throughout the process.
 
-- **LangChain/LangGraph** - Orchestration framework with rich abstractions
-- **LlamaStack** - Infrastructure layer with OpenAI-compatible APIs
-- **ADK (Agent Development Kit)** - Google's agent development framework
+
+## What Are Agentic Design Patterns?
+
+Agentic design patterns are reusable architectural approaches for building AI applications that go beyond simple prompt-response interactions. These patterns enable:
+
+- **Multi-step reasoning** - Breaking complex tasks into manageable steps
+- **Tool usage** - Integrating external capabilities (search, APIs, databases)
+- **Self-correction** - Evaluating and improving outputs
+- **Autonomous workflows** - Coordinating multiple AI components
+
+## The Three Approaches
+
+This documentation series explores agentic AI design patterns and compares their implementation across three approaches:
+
+- **OpenAI APIs** - OpenAI-compatible APIs (Responses/Completions) with LlamaStack as infrastructure
+- **LangChain** - LangChain for orchestration with LlamaStack as infrastructure
+- **ADK** - Google's Agent Development Kit with LiteLLM as infrastructure
+
+### Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Application Code                         │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+┌─────────────────────────▼───────────────────────────────────┐
+│              Orchestration Layer (choose one)               │
+│                                                             │
+│   ┌──────────────┐  ┌──────────────┐    ┌──────────────┐    │
+│   │  LangChain   │  │     ADK      │    │  Manual Code │    │
+│   │              │  │              │    │(OpenAI APIs) │    │
+│   └──────────────┘  └──────────────┘    └──────────────┘    │
+└─────────────────────────┬───────────────────────────────────┘
+                          │ OpenAI-compatible API
+┌─────────────────────────▼───────────────────────────────────┐
+│                   Infrastructure Layer                      │
+│                                                             │
+│   ┌────────────────────────┐  ┌────────────────────────┐    │
+│   │       LlamaStack       │  │        LiteLLM         │    │
+│   │  (OpenAI APIs +        │  │        (ADK)           │    │
+│   │   LangChain)           │  │                        │    │
+│   └────────────────────────┘  └────────────────────────┘    │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+┌─────────────────────────▼───────────────────────────────────┐
+│                    Model Providers                          │
+│                                                             │
+│   OpenAI  │  vLLM  │  Ollama  │  TGI  │  Anthropic  │  ...  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Approach Comparison
+
+| Approach | Orchestration | Infrastructure | Best For |
+|----------|---------------|----------------|----------|
+| **OpenAI APIs** | Manual | LlamaStack | Learning fundamentals, full control |
+| **LangChain** | LangChain/LCEL | LlamaStack | Complex workflows, rich abstractions |
+| **ADK** | Google ADK | LiteLLM | Structured agents, multi-agent systems |
+
+LlamaStack provides model freedom and data sovereignty. LangChain on top of LlamaStack gives you both rich orchestration and infrastructure flexibility. ADK offers a structured, agent-first approach with LiteLLM providing similar model flexibility.
 
 ## Pattern Index
 
 | # | Pattern | Description | Status |
 |---|---------|-------------|--------|
-| 0 | [Introduction](./00-introduction/) | Framework overview and positioning | Done |
 | 1 | [Prompt Chaining](./01-prompt-chaining/) | Sequential prompt execution with output passing | Done |
 | 2 | Routing | Coming soon | Planned |
 | 3 | Parallelization | Coming soon | Planned |
@@ -26,7 +83,7 @@ packages/
 ├── common/             # Shared utilities
 └── patterns/           # All pattern implementations
     └── prompt_chaining/
-        ├── raw.py      # LlamaStack Responses API
+        ├── raw.py      # OpenAI APIs (Responses/Completions)
         ├── langchain.py # LangChain + LlamaStack
         ├── adk.py      # ADK + LiteLLM
         └── run.py      # Unified CLI
@@ -35,11 +92,11 @@ packages/
 ## Running Patterns
 
 ```bash
-# Start LlamaStack (required for raw and langchain)
+# Start LlamaStack (required for OpenAI APIs and LangChain approaches)
 make llama-server
 
 # Run prompt chaining with different approaches
-make prompt-chaining-raw       # Raw LlamaStack
+make prompt-chaining-raw       # OpenAI APIs
 make prompt-chaining-langchain # LangChain + LlamaStack
 make prompt-chaining-adk       # ADK
 make prompt-chaining-all       # Compare all three
@@ -47,20 +104,12 @@ make prompt-chaining-all       # Compare all three
 
 ## Resources
 
-See [links/](./links/) for a curated bibliography with summaries of all referenced resources, organized by:
-- Core Concepts (Responses API, Agentic Patterns)
-- Framework Documentation (LlamaStack, LangChain, ADK)
-- Pattern-Specific Resources
-- Real-World Examples
+See [links/](./links/) for a curated bibliography with summaries of all referenced resources.
 
-## Key Insight
+## References
 
-Each framework serves a different purpose:
-
-| Framework | Role | Best For |
-|-----------|------|----------|
-| **LlamaStack** | Infrastructure layer | Model freedom, data sovereignty, unified API |
-| **LangChain** | Orchestration layer | Complex workflows, rich abstractions |
-| **ADK** | Orchestration layer | Google ecosystem, structured agents |
-
-For complex patterns, consider **LangChain on top of LlamaStack** to get both model freedom and rich orchestration.
+- [Agentic Design Patterns](https://www.amazon.com/Agentic-Design-Patterns-Hands-Intelligent/dp/3032014018) by Antonio Gullí - The book that serves as the basis for this project
+- [Anthropic - Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)
+- [LlamaStack GitHub](https://github.com/llamastack/llama-stack)
+- [LangChain Documentation](https://python.langchain.com/docs/)
+- [Google ADK Documentation](https://google.github.io/adk-docs/)

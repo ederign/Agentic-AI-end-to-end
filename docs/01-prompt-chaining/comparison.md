@@ -139,6 +139,8 @@ chain = prompt1 | llm | parser | prompt2 | llm
 
 ## References
 
+- **Agentic Design Patterns** by Antonio Gullí - The book that serves as the basis for this project
+- [Anthropic - Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) - Guide to agentic design patterns
 - [LlamaStack GitHub](https://github.com/llamastack/llama-stack) - "Composable building blocks to build LLM Apps"
 - [LangChain Docs](https://python.langchain.com/docs/)
 - [Google ADK Docs](https://google.github.io/adk-docs/)

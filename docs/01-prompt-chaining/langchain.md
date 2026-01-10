@@ -75,3 +75,10 @@ make prompt-chaining-langchain
 # or
 uv run --package patterns prompt-chaining --approach langchain
 ```
+
+## References
+
+- **Agentic Design Patterns** by Antonio Gullí - The book that serves as the basis for this project
+- [LangChain Documentation](https://python.langchain.com/docs/)
+- [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
+- [Anthropic - Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)
