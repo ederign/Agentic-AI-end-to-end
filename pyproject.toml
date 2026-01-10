@@ -6,9 +6,6 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
 
-[tools.uv.workspace]
-members = ["packages/*"]
-
 [dependency-groups]
 dev = [
     "pytest",
@@ -19,9 +16,7 @@ dev = [
 [tool.uv.workspace]
 members = [
     "packages/common",
-    "packages/langchain_impl",
-    "packages/llamastack_impl",
-    "packages/adk_impl",
+    "packages/patterns",
 ]
 
 [tool.uv.sources]

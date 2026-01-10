@@ -1,0 +1,16 @@
+#!/bin/bash
+# ABOUTME: Pre-commit hook that runs linting and type checking.
+# ABOUTME: Prevents commits if code quality checks fail.
+
+echo "Running pre-commit checks..."
+
+# Run lint and typecheck
+make check
+
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "Pre-commit checks failed. Please fix the issues above before committing."
+    exit 1
+fi
+
+echo "Pre-commit checks passed!"

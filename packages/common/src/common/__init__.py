@@ -1,7 +1,2 @@
-from __future__ import annotations
-
-from dotenv import load_dotenv
-from pathlib import Path
-
-def main() -> None:
-    print("Hello from common!")
+# ABOUTME: Shared utilities for all pattern implementations.
+# ABOUTME: Provides environment loading from repo root.
